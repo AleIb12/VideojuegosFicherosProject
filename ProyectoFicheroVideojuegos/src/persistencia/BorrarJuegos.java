@@ -1,8 +1,10 @@
 package persistencia;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,6 +39,14 @@ public void borrar(String nombreborrar, String nomarchivo) {
 		e.printStackTrace();
 	}
 	vd.removeIf(videojuego -> videojuego.getNombreVideojuego().equals(nombreborrar));
+	try (FileWriter fw = new FileWriter(f);BufferedWriter bw = new BufferedWriter(fw)){
+		for (Videojuego videojuego2 : vd) {
+			bw.write(videojuego2.getNombreVideojuego() + "_" + videojuego2.getCompañia() + "_" + videojuego2.getNota());
+		}
+	}
+	catch (Exception e) {
+		// TODO: handle exception
+	}
 	
 }
 }
