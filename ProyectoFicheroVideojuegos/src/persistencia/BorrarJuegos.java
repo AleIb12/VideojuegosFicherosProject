@@ -12,7 +12,19 @@ import java.util.Scanner;
 
 import entidad.*;
 public class BorrarJuegos {
-
+/**
+ * 
+ * @param nombreborrar
+ * @param nomarchivo
+ * <p>Este metodo inicialmente recoge dos strings los cuales uno sirve ya que sera el nombre del videojuego que queremos borrar
+ * el otro string es el nombre del archivo con el cual trabjaremos 
+ * creamos un arraylist para almacenar los videojuegos que pillemos del fichero 
+ * con un buffered reader leemos todas las lineas y las separamos usando un split el cual posteriormente guardamos en el array videojuego
+ * con este array creamos un objeto videojuego el cual finalmente añadimos al arraylist
+ * despues de esto revisaremos el araylist cotejando los nombres y si el nombre coincide se eliminara del arraylist y despues de esto recribimos el fichero entero</p>
+ * @exception FileNotFoundException para el fichero
+ * @exception IOException para controlar errores
+ */
 public void borrar(String nombreborrar, String nomarchivo) {
 
 	ArrayList<Videojuego> vd = new ArrayList<Videojuego>();
