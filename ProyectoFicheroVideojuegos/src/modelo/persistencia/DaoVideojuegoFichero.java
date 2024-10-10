@@ -17,7 +17,7 @@ public class DaoVideojuegoFichero {
 
     public List<Videojuego> listarVideojuegos() throws Exception {
         List<Videojuego> videojuegos = new ArrayList<>();
-        try (FileReader fr = new FileReader(NOMBRE_FICHERO);
+        try (FileReader fr = new FileReader(NOMBRE_COMPAÑIA_NOTA);
              BufferedReader br = new BufferedReader(fr)) {
             String cadena;
             while ((cadena = br.readLine()) != null) {
@@ -25,7 +25,7 @@ public class DaoVideojuegoFichero {
                 String nombreVideojuego = cadenaPartida[0];
                 String companiaVideojuego = cadenaPartida[1];
                 int notaVideojuego = Integer.parseInt(cadenaPartida[2]);
-                videojuegos.add(new Videojuego(nombreVideojuego, companiaVideojuego, notaVideojuego));
+                
             }
         }
         return videojuegos;
@@ -45,7 +45,7 @@ public class DaoVideojuegoFichero {
 
     public void borrarVideojuego(String nombre) throws Exception {
         List<Videojuego> videojuegos = listarVideojuegos();
-        videojuegos.removeIf(v -> v.getNota().equals(nombre));
+        videojuegos.removeIf(v -> v.getNota().equals(nota));
         try (FileWriter fw = new FileWriter(NOMBRE_COMPAÑIA_NOTA, false);
              BufferedWriter bw = new BufferedWriter(fw)) {
             for (Videojuego v : videojuegos) {
