@@ -51,4 +51,5 @@ public class Videojuego {
 				&& Objects.equals(nota, other.nota);
 	}
 	
+	
 }
