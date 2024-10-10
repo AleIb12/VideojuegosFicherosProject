@@ -43,17 +43,9 @@ public class DaoVideojuegoFichero {
         }
     }
 
-    public void borrarVideojuego(String nombre) throws Exception {
-        List<Videojuego> videojuegos = listarVideojuegos();
-        videojuegos.removeIf(v -> v.getNota().equals(nota));
-        try (FileWriter fw = new FileWriter(NOMBRE_COMPAÑIA_NOTA, false);
-             BufferedWriter bw = new BufferedWriter(fw)) {
-            for (Videojuego v : videojuegos) {
-                bw.write(v.toString());
-                bw.newLine();
-            }
-        }
-    }
+  
+        
+    
    
    
 }
