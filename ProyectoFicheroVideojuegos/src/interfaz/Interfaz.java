@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Interfaz {
 	
 	private static Scanner scanner = new Scanner(System.in);
-	 private static VideojuegoController controller = new VideojuegoController();
-	
+	private static DaoVideojuegoFichero NOMBRE_COMAPAÑIA_NOTA = new VideojuegoController();
+	 
 	public static void main(String[]args) {
 		int opcion;
 		do {
@@ -61,14 +61,14 @@ public class Interfaz {
 			System.out.println("Ingrese la nota: ");
 			String nota = scanner.nextLine();
 			
-			controller.agregarVideojuego(nombre, compania, nota);
+			NOMBRE_COMAPAÑIA_NOTA.agregarVideojuego(nombre, compania, nota);
 		}
 		
 		/**
 		 * Método para listar los videojuegos creados por el usuario
 		 */
 		private static void ListarVideojuegos() {
-	        controller.ListarVideojuegos();
+			NOMBRE_COMAPAÑIA_NOTA.ListarVideojuegos();
 	    }
 		/**
 		 * Método para ingresar el nombre del Videojuego y poder borrarlo,
@@ -77,7 +77,7 @@ public class Interfaz {
 		private static void BorrarJuegos() {
 	        System.out.print("Ingrese el nombre del videojuego a borrar: ");
 	        String nombre = scanner.nextLine();
-	        controller.BorrarJuegos(nombre);
+	        NOMBRE_COMAPAÑIA_NOTA.BorrarJuegos(nombre);
 	    }
 }
 	
