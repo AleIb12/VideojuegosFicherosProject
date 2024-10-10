@@ -1,12 +1,13 @@
 package interfaz;
 
 import java.util.Scanner;
-
+import entidad.Videojuego;
+import persistencia.*;
 public class Interfaz {
 	
 	private static Scanner scanner = new Scanner(System.in);
-	private static DaoVideojuegoFichero NOMBRE_COMAPAÑIA_NOTA = new VideojuegoController();
-	 
+	private static DaoVideojuegoFichero NOMBRE_COMAPAÑIA_NOTA = new DaoVideojuegoFichero();
+	
 	public static void main(String[]args) {
 		int opcion;
 		do {
@@ -59,7 +60,7 @@ public class Interfaz {
 			System.out.println("Ingrese la comapañía: ");
 			String compania = scanner.nextLine();
 			System.out.println("Ingrese la nota: ");
-			String nota = scanner.nextLine();
+			int nota = Integer.parseInt(scanner.nextLine());
 			
 			NOMBRE_COMAPAÑIA_NOTA.agregarVideojuego(nombre, compania, nota);
 		}
@@ -77,7 +78,11 @@ public class Interfaz {
 		private static void BorrarJuegos() {
 	        System.out.print("Ingrese el nombre del videojuego a borrar: ");
 	        String nombre = scanner.nextLine();
+	        String compania = scanner.nextLine();
+	        int nota = Integer.parseInt(scanner.nextLine());
 	        NOMBRE_COMAPAÑIA_NOTA.BorrarJuegos(nombre);
+	        NOMBRE_COMAPAÑIA_NOTA.BorrarJuegos(compania);
+	        NOMBRE_COMAPAÑIA_NOTA.BorrarJuegos(nota);
 	    }
 }
 	
