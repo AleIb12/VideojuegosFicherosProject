@@ -3,40 +3,40 @@ package entidad;
 import java.util.Objects;
 
 public class Videojuego {
-	private String NombreVideojuego;
-	private String Compañia;
-	private String Nota;
+	private String nombre;
+	private String compania;
+	private int nota;
 	public Videojuego(String nombreVideojuego, String compañia, String nota) {
 		super();
-		NombreVideojuego = nombreVideojuego;
-		Compañia = compañia;
-		Nota = nota;
+		nombre = nombreVideojuego;
+		compania = compañia;
+		nota = nota;
 	}
 	public String getNombreVideojuego() {
-		return NombreVideojuego;
+		return nombre;
 	}
 	public void setNombreVideojuego(String nombreVideojuego) {
-		NombreVideojuego = nombreVideojuego;
+		nombre = nombreVideojuego;
 	}
 	public String getCompañia() {
-		return Compañia;
+		return compania;
 	}
 	public void setCompañia(String compañia) {
-		Compañia = compañia;
+		compania = compañia;
 	}
-	public String getNota() {
-		return Nota;
+	public int getNota() {
+		return nota;
 	}
 	public void setNota(String nota) {
-		Nota = nota;
+		nota = nota;
 	}
 	@Override
 	public String toString() {
-		return "Videojuego [NombreVideojuego=" + NombreVideojuego + ", Compañia=" + Compañia + ", Nota=" + Nota + "]";
+		return "Videojuego [NombreVideojuego=" + nombre + ", Compañia=" + compania + ", Nota=" + nota + "]";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(Compañia, NombreVideojuego, Nota);
+		return Objects.hash(compania, nombre, nota);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -47,8 +47,9 @@ public class Videojuego {
 		if (getClass() != obj.getClass())
 			return false;
 		Videojuego other = (Videojuego) obj;
-		return Objects.equals(Compañia, other.Compañia) && Objects.equals(NombreVideojuego, other.NombreVideojuego)
-				&& Objects.equals(Nota, other.Nota);
+		return Objects.equals(compania, other.compania) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(nota, other.nota);
 	}
+	
 	
 }
