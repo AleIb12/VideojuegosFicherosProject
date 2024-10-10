@@ -1,4 +1,4 @@
-package objetovideojuego;
+package entidad;
 
 import java.util.Objects;
 
