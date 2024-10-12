@@ -49,7 +49,7 @@ public class DaoVideojuegoFichero {
                         String companiaVideojuego = cadenaPartida[1];
                         String notaVideojuego = cadenaPartida[2];
 
-                        Videojuego v = new Videojuego(nombreVideojuego, companiaVideojuego, notaVideojuego);
+                        Videojuego v = new Videojuego(nombreVideojuego, companiaVideojuego, Integer.parseInt(notaVideojuego));
                         videojuegos.add(v);
                     } catch (NumberFormatException e) {
                         System.out.println("Error al convertir la nota a número en la línea: " + cadena);

@@ -67,7 +67,7 @@ public class Interfaz {
 		System.out.println("Ingrese la compañía: ");
 		String compania = scanner.nextLine();
 		System.out.println("Ingrese la nota: ");
-		String nota = scanner.nextLine();
+		int nota = Integer.parseInt(scanner.nextLine());
 
 		Videojuego videojuego = new Videojuego(nombre, compania, nota);
 		try {

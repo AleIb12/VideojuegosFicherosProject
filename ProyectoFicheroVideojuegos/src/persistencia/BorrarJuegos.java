@@ -53,7 +53,7 @@ private static final String NOMBRE_COMPANIA_NOTA = "src/resources/videojuegos.tx
                  String nota = videojuegoData[2];
 
                
-                 Videojuego v = new Videojuego(nombre, compania, nota);
+                 Videojuego v = new Videojuego(nombre, compania, Integer.parseInt(nota));
                  videojuegos.add(v);
              } else {
                  System.out.println("Formato incorrecto en la línea: " + linea);
