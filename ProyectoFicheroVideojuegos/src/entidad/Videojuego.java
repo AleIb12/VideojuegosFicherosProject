@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Videojuego {
 	private String nombre;
 	private String compania;
-	private int nota;
+	private String nota;
 	public Videojuego(String nombreVideojuego, String compañia, String nota) {
 		super();
 		nombre = nombreVideojuego;
 		compania = compañia;
-		nota = nota;
+		nota = this.nota;
 	}
 	public String getNombreVideojuego() {
 		return nombre;
@@ -24,11 +24,12 @@ public class Videojuego {
 	public void setCompañia(String compañia) {
 		compania = compañia;
 	}
-	public int getNota() {
+	public String getNota() {
 		return nota;
 	}
+
 	public void setNota(String nota) {
-		nota = nota;
+		this.nota = nota;
 	}
 	@Override
 	public String toString() {
@@ -50,10 +51,8 @@ public class Videojuego {
 		return Objects.equals(compania, other.compania) && Objects.equals(nombre, other.nombre)
 				&& Objects.equals(nota, other.nota);
 	}
-	
-	
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> main
+
+
+

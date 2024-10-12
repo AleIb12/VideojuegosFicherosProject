@@ -12,53 +12,75 @@ import java.util.Scanner;
 
 import entidad.*;
 public class BorrarJuegos {
-/**
- * 
- * @param nombreborrar
- * @param nomarchivo
- * <p>Este metodo inicialmente recoge dos strings los cuales uno sirve ya que sera el nombre del videojuego que queremos borrar
- * el otro string es el nombre del archivo con el cual trabjaremos 
- * creamos un arraylist para almacenar los videojuegos que pillemos del fichero 
- * con un buffered reader leemos todas las lineas y las separamos usando un split el cual posteriormente guardamos en el array videojuego
- * con este array creamos un objeto videojuego el cual finalmente añadimos al arraylist
- * despues de esto revisaremos el araylist cotejando los nombres y si el nombre coincide se eliminara del arraylist y despues de esto recribimos el fichero entero</p>
- * @exception FileNotFoundException para el fichero
- * @exception IOException para controlar errores
- */
-public void borrar(String nombreborrar, String nomarchivo) {
+	/**
+	 * Borra un videojuego del archivo especificado basado en su nombre.
+	 * 
+	 * <p>Este método recibe el nombre de un videojuego y el nombre de un archivo. Lee todas las líneas del archivo,
+	 * separa los datos de cada línea utilizando un carácter de separación ("_") y los guarda en una lista de videojuegos.
+	 * Si el nombre de algún videojuego en la lista coincide con el nombre proporcionado, se elimina dicho videojuego
+	 * de la lista. Finalmente, el archivo se sobrescribe con la lista actualizada de videojuegos.</p>
+	 * 
+	 * @param nombreborrar El nombre del videojuego que se desea borrar.
+	 * <p>Se utiliza para buscar y eliminar el videojuego correspondiente de la lista.</p>
+	 * 
+	 * @param nomarchivo El nombre del archivo en el que se almacenan los videojuegos.
+	 * <p>Especifica el archivo en el que se leerán y sobrescribirán los datos de los videojuegos.</p>
+	 * 
+	 * @exception FileNotFoundException Si el archivo especificado no se encuentra.
+	 * <p>Se lanza cuando el archivo de videojuegos no existe o no puede ser localizado.</p>
+	 * 
+	 * @exception IOException Si ocurre un error durante la lectura o escritura del archivo.
+	 * <p>Se lanza cuando hay un problema al leer las líneas del archivo o al escribir la nueva lista en el archivo.</p>
+	 */
+private static final String NOMBRE_COMPANIA_NOTA = "src/resources/videojuegos.txt";
 
-	ArrayList<Videojuego> vd = new ArrayList<Videojuego>();
-	File f = new File(nomarchivo);
-	try (FileReader fr = new FileReader(f);BufferedReader br = new BufferedReader(fr)) {
-		while(br.readLine()!=null) {
-			Videojuego v = null;
-			String[] videojuego = null;
-			
-				String linea = br.readLine();
-				 videojuego = linea.split("_");
-				 v.setNombreVideojuego(videojuego[0]);
-				 v.setCompañia(videojuego[1]);
-				 v.setNota(videojuego[2]);
-				 vd.add(v);
-				 
-			
-		}
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	vd.removeIf(videojuego -> videojuego.getNombreVideojuego().equals(nombreborrar));
-	try (FileWriter fw = new FileWriter(f);BufferedWriter bw = new BufferedWriter(fw)){
-		for (Videojuego videojuego2 : vd) {
-			bw.write(videojuego2.getNombreVideojuego() + "_" + videojuego2.getCompañia() + "_" + videojuego2.getNota());
-		}
-	}
-	catch (Exception e) {
-		// TODO: handle exception
-	}
-	
-}
+ public void borrarVideojuego(String nombreborrar) {
+     ArrayList<Videojuego> videojuegos = new ArrayList<>();
+     File f = new File(NOMBRE_COMPANIA_NOTA);
+
+  
+     try (FileReader fr = new FileReader(f);
+          BufferedReader br = new BufferedReader(fr)) {
+          
+         String linea;
+         while ((linea = br.readLine()) != null) {
+             String[] videojuegoData = linea.split("_");
+
+            
+             if (videojuegoData.length >= 3) {
+                 String nombre = videojuegoData[0];
+                 String compania = videojuegoData[1];
+                 String nota = videojuegoData[2];
+
+               
+                 Videojuego v = new Videojuego(nombre, compania, nota);
+                 videojuegos.add(v);
+             } else {
+                 System.out.println("Formato incorrecto en la línea: " + linea);
+             }
+         }
+     } catch (FileNotFoundException e) {
+         System.out.println("Archivo no encontrado: " + NOMBRE_COMPANIA_NOTA);
+         e.printStackTrace();
+     } catch (IOException e) {
+         System.out.println("Error al leer el archivo.");
+         e.printStackTrace();
+     }
+
+  
+     videojuegos.removeIf(videojuego -> videojuego.getNombreVideojuego().equals(nombreborrar));
+
+    
+     try (FileWriter fw = new FileWriter(f);
+          BufferedWriter bw = new BufferedWriter(fw)) {
+          
+         for (Videojuego videojuego : videojuegos) {
+             bw.write(videojuego.getNombreVideojuego() + "_" + videojuego.getCompañia() + "_" + videojuego.getNota());
+             bw.newLine(); 
+         }
+     } catch (IOException e) {
+         System.out.println("Error al escribir en el archivo.");
+         e.printStackTrace();
+     }
+ }
 }
