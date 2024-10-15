@@ -14,7 +14,7 @@ import persistencia.BorrarJuegos;
  */
 public class Interfaz {
 	
-	private static Scanner scanner = new Scanner(System.in);
+	public static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		int opcion;
@@ -60,7 +60,7 @@ public class Interfaz {
 	 * <p>Se crea un objeto {@link Videojuego} con los datos ingresados y se registra
 	 * en el sistema utilizando {@link DaoVideojuegoFichero}.</p>
 	 */
-	private static void agregarVideojuego() {
+	public static void agregarVideojuego() {
 		DaoVideojuegoFichero daoVideojuegoFichero = new DaoVideojuegoFichero();
 		System.out.println("Ingrese el nombre del videojuego a crear: ");
 		String nombre = scanner.nextLine();
@@ -83,7 +83,7 @@ public class Interfaz {
 	 * <p>Este método llama al método {@link DaoVideojuegoFichero#listarVideojuegos()}
 	 * para mostrar los videojuegos en la consola.</p>
 	 */
-	private static void listarVideojuegos() {
+	public static void listarVideojuegos() {
 		DaoVideojuegoFichero daoVideojuegoFichero = new DaoVideojuegoFichero();
 		try {
 			daoVideojuegoFichero.listarVideojuegos();
@@ -97,7 +97,7 @@ public class Interfaz {
 	 * 
 	 * <p>Este método utiliza la clase {@link BorrarJuegos} para realizar la operación de borrado.</p>
 	 */
-	private static void borrarJuegos() {
+	public static void borrarJuegos() {
 		System.out.println("Ingrese el nombre del videojuego a borrar: ");
 		String nombre = scanner.nextLine();
 		BorrarJuegos borrarJuegos = new BorrarJuegos();

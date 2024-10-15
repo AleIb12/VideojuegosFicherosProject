@@ -20,7 +20,7 @@ import entidad.Videojuego;
  */
 public class DaoVideojuegoFichero {
     
-    private static final String NOMBRE_COMPANIA_NOTA = "src/resources/videojuegos.txt";
+    static String NOMBRE_COMPANIA_NOTA = "src/resources/videojuegos.txt";
 
     /**
      * Lista todos los videojuegos almacenados en el archivo.
@@ -93,4 +93,6 @@ public class DaoVideojuegoFichero {
             bw.newLine();
         }
     }
+
+
 }
