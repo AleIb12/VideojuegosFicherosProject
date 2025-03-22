@@ -22,9 +22,19 @@ public class Videojuego {
      *         si la compañía es vacía o tiene menos de 5 letras, o si la nota no está en el rango permitido.
      */
     public Videojuego(String nombreVideojuego, String compañia, int nota) {
-        setNombreVideojuego(nombreVideojuego);
-        setCompañia(compañia); 
-        setNota(nota); 
+        if (nombreVideojuego == null || nombreVideojuego.trim().isEmpty() || nombreVideojuego.length() < 3) {
+            throw new IllegalArgumentException("El nombre del videojuego no puede estar vacío y debe tener al menos 3 letras.");
+        }
+        if (compañia == null || compañia.trim().isEmpty() || compañia.length() < 5) {
+            throw new IllegalArgumentException("La compañía no puede estar vacía y debe tener al menos 5 letras.");
+        }
+        if (nota < 0 || nota > 100) {
+            throw new IllegalArgumentException("La nota no puede ser inferior a 0 ni superior a 100. No admite decimales.");
+        }
+
+        this.nombre = nombreVideojuego;
+        this.compania = compañia;
+        this.nota = nota;
     }
 
     /**

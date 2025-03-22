@@ -1,5 +1,6 @@
 package modelo.persistencia;
 
+import entidad.Videojuego;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,7 +9,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import entidad.Videojuego;
 
 /**
  * Clase que maneja la persistencia de datos de videojuegos en un archivo.
@@ -20,7 +20,16 @@ import entidad.Videojuego;
  */
 public class DaoVideojuegoFichero {
     
-    static String NOMBRE_COMPANIA_NOTA = "src/resources/videojuegos.txt";
+    static String NOMBRE_COMPANIA_NOTA;
+    
+    static {
+        String rutaBase = System.getProperty("user.dir");
+        java.nio.file.Path path = java.nio.file.Paths.get(rutaBase, "src", "resources", "videojuegos.txt");
+        if (!java.nio.file.Files.exists(path)) {
+            path = java.nio.file.Paths.get(rutaBase, "resources", "videojuegos.txt");
+        }
+        NOMBRE_COMPANIA_NOTA = path.toString();
+    }
 
     /**
      * Lista todos los videojuegos almacenados en el archivo.
